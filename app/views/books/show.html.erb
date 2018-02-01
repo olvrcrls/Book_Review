@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= image_tag @book.book_img.url(:book_show), class: "book-show" %>
+	</div> <!--/.col-md-4 -->
+
+	<div class="col-md-8">
+		<div class="book-info">
+			<h1 class="book-title"><%= @book.title %></h1>
+			<h3 class="book-author"><span>by</span>	 <%= @book.author %></h3>
+			<h4 class="avg-rating">Average Rating:</h4>
+			<div class="average-review-rating" data-score="<%= @average_review %>"></div>
+			<% if @book.reviews.blank? %>
+				<span class="number-of-views"><i>No ratings for this book, yet!</i></span>
+			<% else %>
+				<span class="number-of-views"><i>Based of <%= @book.reviews.count %> reviews</i></span>
+			<% end %>
+			<h4><u><%= @book.category.name %></u></h4>
+			<div class="page-header"><b>Description</b></div>
+			<div class="book-description">
+				<%= @book.description %>
+			</div>
+		</div><!--/.book-info-->
+	</div><!--/.col-md-8-->
+</div><!--/.row-->
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="reviews">
+			<!-- reviews -->
+			<h2>Reviews</h2>
+			<% if !@book.reviews.blank? %>
+				<%= render @book.reviews %>
+			<% else %>
+				<p class="review-comment">There is no comment for this book, yet!</p>
+			<% end %>
+			<%= link_to "Add Review", new_book_review_path(@book), class: "btn btn-md btn-custom" %>
+
+		</div>
+	</div><!--/.col-md-4-->
+</div><!--/.row-->
+<br>
+<div class="link btn-group">
+	<% if user_signed_in? %>
+		
+		<% if @book.user_id == current_user.id %>
+		<div class="pull-left">
+			<%= link_to "Edit Book", edit_book_path(@book), class: "btn btn-md btn-custom" %>
+			<%= link_to "Delete Book", book_path(@book), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-md btn-custom" %>
+		</div>
+		<% end %>
+	<% end %>
+
+	<div class="pull-right">
+		<%= link_to "Return", root_path, class: "btn btn-custom" %>
+	</div>
+</div><!--/.link .btn-group-->
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		score: () => {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>

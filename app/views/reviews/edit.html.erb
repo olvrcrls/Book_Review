@@ -1,0 +1,19 @@
+<div class="col-md-6 col-md-offset-3">
+	<div class="edit-review-form">
+		<h3 class="page-header">Edit your review on <%= @book.title %> book</h3>
+		<%= simple_form_for([@book, @review]) do |form| %>
+			<div id="rating-form">
+					<label>Rating</label>
+				</div> <!--/.rating-form-->
+			<%= form.input :comment %>
+			<%= form.button :submit, { class: "btn btn-md btn-success" } %>
+		<% end %>
+		<%= link_to("Return", book_path(@book) , {class: "btn btn-md btn-default"}) %>
+	</div><!--/.edit-review-form-->
+</div><!--/.col-md-6 col-md-offset-3-->
+<script>
+	$('#rating-form').raty({
+		path: '/assets/',
+		scoreName: 'review[rating]'
+	});
+</script>

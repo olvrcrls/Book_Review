@@ -1,0 +1,19 @@
+<% if params[:category].blank? %>
+	<h1>List of All Books</h1>
+<% else %>
+	<h1>List of <%= params[:category] %> Books</h1>
+<% end %>
+<br>
+<% if @books.count > 0 %>
+	<% @books.each do |book| %>
+	<div class="col-md-3 col-sm-3 col-xs-3">
+		<a href="/books/<%= book.id %>">
+			<%= image_tag book.book_img.url(:book_index), class: "book" %>
+		</a>
+	</div> <!--/.col-md-3-->
+	<% end %>
+<% else %>
+<div class="well well-md">
+	<strong>There is book, yet.</strong>
+</div>
+<% end %>

@@ -1,0 +1,9 @@
+<%= simple_form_for @book, :html => { :multipart => true } do |form| %>
+	<%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a category", class: "form-control") %>
+	<%= form.file_field :book_img %>
+	<%= form.input :title, label: "Book Title" %>
+	<%= form.input :description, label: "Book Description" %>
+	<%= form.input :author, label: "Author" %>
+	<%= form.button :submit, { class: "btn btn-md btn-success" } %>
+	<%= link_to "Return", root_path, { class: "btn btn-default btn-md"} %>
+<% end %>
