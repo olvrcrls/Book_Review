@@ -1,24 +1,12 @@
-# README
+## Book Reviews website created in Ruby in Rails 5
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Credit to the tutorial that can be found <a href="https://www.youtube.com/watch?v=AMai9EZesXY">here.</a>
 
-Things you may want to cover:
+# Homepage
+![alt/text](screenshots/homepage.png)
 
-* Ruby version
+# Filtering Books by Category
+![alt/text](screenshots/filter_by_category.png)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Viewing and rating a book
+![alt/text](screenshots/viewing_a_book.png)
